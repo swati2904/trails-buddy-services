@@ -1,0 +1,48 @@
+meta {
+  name: Create-Comment
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/api/comments
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Host: <calculated when request is sent>
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzd2F0aUBnbWFpbC5jb20iLCJpYXQiOjE3Mzk1Njk4ODYsImV4cCI6MTczOTY1NjI4Nn0.CHgiD8bTyQQqti4DECBk8WHQ-QHKQsGFepRoUB2wQ_8
+}
+
+body:json {
+  {
+    "trailId": "431428080",
+    "comment": "Great trail!",
+    "ratings": 5,
+    "liked": [
+      1,
+      2,
+      3
+    ],
+    "level": 2,
+    "access": [
+      1,
+      2
+    ],
+    "parkingCost": [
+      0
+    ],
+    "parkingLotSize": 50,
+    "conditions": [
+      1,
+      2
+    ],
+    "activityType": 1,
+    "activityDate": "2025-02-14T00:00:00Z"
+  }
+}
