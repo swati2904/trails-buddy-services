@@ -2,13 +2,16 @@ package com.trailsbuddy.trailservices.service;
 
 import com.trailsbuddy.trailservices.dto.CommentRequest;
 import com.trailsbuddy.trailservices.model.Comment;
+import com.trailsbuddy.trailservices.model.User;
 import com.trailsbuddy.trailservices.repository.CommentRepository;
 import com.trailsbuddy.trailservices.repository.UserRepository;
 import com.trailsbuddy.trailservices.security.JwtService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class CommentService {
@@ -24,11 +27,14 @@ public class CommentService {
 
     public Comment createComment(CommentRequest request, String token) {
         String email = jwtService.extractUsername(token.replace("Bearer ", ""));
-        String userId = userRepository.findByEmail(email).orElseThrow().getId();
+        User user = userRepository.findByEmail(email).orElseThrow();
+        String userId = user.getId();
+        String username = user.getUsername();
 
         Comment comment = new Comment();
         comment.setTrailId(request.getTrailId());
         comment.setUserId(userId);
+        comment.setUsername(username);
         comment.setComment(request.getComment());
         comment.setRatings(request.getRatings());
         comment.setLiked(request.getLiked());
@@ -44,7 +50,8 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<Comment> getComments(String trailId) {
-        return commentRepository.findByTrailId(trailId);
+    public Page<Comment> getComments(String trailId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return commentRepository.findByTrailId(trailId, pageable);
     }
 }

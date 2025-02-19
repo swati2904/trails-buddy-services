@@ -12,6 +12,7 @@ public class Comment {
     private String id;
     private String trailId;
     private String userId;
+    private String username;
     private String comment;
     private Integer ratings;
     private ArrayList<Integer> liked;
@@ -51,6 +52,14 @@ public class Comment {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getComment() {

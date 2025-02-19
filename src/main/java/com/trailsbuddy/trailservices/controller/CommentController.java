@@ -3,9 +3,9 @@ package com.trailsbuddy.trailservices.controller;
 import com.trailsbuddy.trailservices.dto.CommentRequest;
 import com.trailsbuddy.trailservices.model.Comment;
 import com.trailsbuddy.trailservices.service.CommentService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/comments")
@@ -24,7 +24,10 @@ public class CommentController {
     }
 
     @GetMapping("/{trailId}")
-    public ResponseEntity<List<Comment>> getComments(@PathVariable String trailId) {
-        return ResponseEntity.ok(commentService.getComments(trailId));
+    public ResponseEntity<Page<Comment>> getComments(
+            @PathVariable String trailId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size) {
+        return ResponseEntity.ok(commentService.getComments(trailId, page, size));
     }
 }
