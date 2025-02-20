@@ -5,44 +5,33 @@ meta {
 }
 
 post {
-  url: {{url}}/api/comments
+  url: {{url}}/comments
   body: json
   auth: bearer
 }
 
 headers {
   Content-Type: application/json
-  Host: <calculated when request is sent>
+  Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzd2F0aUBnbWFpbC5jb20iLCJpYXQiOjE3NDAwMTI5NTQsImV4cCI6MTc0MDA5OTM1NH0.AWVBUXCUT5XYbQP5aB-96JlTVwLamaocO88HfUeg5rE
+  Accept: */*
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzd2F0aUBnbWFpbC5jb20iLCJpYXQiOjE3Mzk1Njk4ODYsImV4cCI6MTczOTY1NjI4Nn0.CHgiD8bTyQQqti4DECBk8WHQ-QHKQsGFepRoUB2wQ_8
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzd2F0aUBnbWFpbC5jb20iLCJpYXQiOjE3NDAwMTI5NTQsImV4cCI6MTc0MDA5OTM1NH0.AWVBUXCUT5XYbQP5aB-96JlTVwLamaocO88HfUeg5rE
 }
 
 body:json {
   {
-    "trailId": "431428080",
-    "comment": "Great trail!",
-    "ratings": 5,
-    "liked": [
-      1,
-      2,
-      3
-    ],
-    "level": 2,
-    "access": [
-      1,
-      2
-    ],
-    "parkingCost": [
-      0
-    ],
-    "parkingLotSize": 50,
-    "conditions": [
-      1,
-      2
-    ],
-    "activityType": 1,
-    "activityDate": "2025-02-14T00:00:00Z"
+      "trailId": "431428080",
+      "comment": "Nice Trail!!",
+      "ratings": 5,
+      "liked": [1, 2],
+      "level": 2,
+      "access": [1,2],
+      "parkingCost": [0,1],
+      "parkingLotSize": 50,
+      "conditions": [1, 2, 3, 4, 5, 7, 9, 10],
+      "activityType": 1,
+      "activityDate": "2025-01-14T00:00:00Z"
   }
 }
