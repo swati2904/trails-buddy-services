@@ -14,7 +14,6 @@ Trail Services is a Spring Boot application that provides APIs for user authenti
 
 ## Project Structure
 
-
 ## Features
 
 - User Authentication (Registration and Login)
@@ -22,6 +21,10 @@ Trail Services is a Spring Boot application that provides APIs for user authenti
 - Comment Management (Create and Retrieve Comments)
 - MongoDB Integration
 - Exception Handling
+
+
+## Frontend Repo: Services used here:
+https://github.com/swati2904/trails-buddy
 
 ## API Endpoints
 
